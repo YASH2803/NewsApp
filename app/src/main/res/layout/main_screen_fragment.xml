@@ -13,22 +13,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginEnd="144dp"
-            android:layout_marginBottom="338dp"
-            android:text="@{viewModel.response}"
-            android:textSize="25sp"
-            tools:text="kadfsjlh" />
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/news_recyclerview"-->
+<!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->
-<!--            android:clipToPadding="true" />-->
+<!--            android:text="@{viewModel.newsArticles}"-->
+<!--            android:textSize="25sp"-->
+<!--            tools:text="3.0" />-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progress_loader"-->
+<!--            style="?android:attr/progressBarStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:visibility="visible" />-->
+        <ImageView
+            android:id="@+id/noInternet"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_broken_image"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/news_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:clipToPadding="true"
+            app:listData="@{viewModel.newsArticles}"
+            tools:listitem="@layout/news_item_layout"/>
     </RelativeLayout>
 </layout>

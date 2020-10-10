@@ -1,13 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="detailViewModel"
+            type="com.example.newsapp20.detailScreen.DetailScreenViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".detailScreen.DetailScreenFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <ImageView
+        android:id="@+id/detail_view_thumbnail"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        app:imgUrl="@{detailViewModel.selectedNewsItem.urlToImage}"
+        tools:srcCompat="@drawable/car"
+        app:layout_constraintBottom_toTopOf="@+id/detail_view_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/detail_view_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:text="@{detailViewModel.selectedNewsItem.title}"
+        app:layout_constraintBottom_toTopOf="@+id/detail_view_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_view_thumbnail"
+        tools:text="This will be the title of the news" />
+
+    <TextView
+        android:id="@+id/detail_view_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        app:text="@{detailViewModel.selectedNewsItem.description}"
+        app:layout_constraintBottom_toTopOf="@+id/detail_view_author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_view_title"
+        tools:text="This will be the description . This will be the description .This will be the description .This will be the description ." />
+
+    <TextView
+        android:id="@+id/detail_view_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:text="@{detailViewModel.selectedNewsItem.author}"
+        app:layout_constraintBottom_toTopOf="@+id/detail_view_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_view_description"
+        tools:text="By, Yash Ponam" />
+
+    <TextView
+        android:id="@+id/detail_view_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/text_color"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:formattedDate="@{detailViewModel.selectedNewsItem.publishedAt}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_view_author"
+        tools:text="2020-08-10, 02:36:18" />
+
+    <Button
+        android:id="@+id/detail_view_url"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button_background"
+        android:textColor="@android:color/white"
+        android:text="@string/button_link"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

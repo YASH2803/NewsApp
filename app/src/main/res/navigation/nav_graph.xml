@@ -9,5 +9,19 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.example.newsapp20.overviewScreen.MainScreenFragment"
         android:label="main_screen_fragment"
-        tools:layout="@layout/main_screen_fragment" />
+        tools:layout="@layout/main_screen_fragment" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_detailScreenFragment"
+            app:destination="@id/detailScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailScreenFragment"
+        android:name="com.example.newsapp20.detailScreen.DetailScreenFragment"
+        android:label="DetailScreenFragment"
+        tools:layout="@layout/detail_screen_fragment">
+        <argument android:name="selectedNewsItem"
+            app:argType="com.example.newsapp20.model.News"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>
